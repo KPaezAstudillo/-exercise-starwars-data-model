@@ -17,9 +17,6 @@ class User(Base):
     last_name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     password = Column(String(250), nullable=False)
-    children_character = relationship("FavoriteCharacter", back_populates="users")
-    children_planet = relationship("FavoritePlanet", back_populates="users")
-
     
 
 class Character(Base):
@@ -40,14 +37,14 @@ class FavoriteCharacter(Base):
     id = Column(Integer, primary_key=True)
     users_id = Column(Integer, ForeignKey('users.id'))
     characters_id = Column(Integer, ForeignKey('characters.id'))
-    user = relationship('User', back_populates="children")
+    user = relationship('User')
 
 class FavoritePlanet(Base):
     __tablename__= 'favoriteplanets'
     id = Column(Integer, primary_key=True)
     users_id = Column(Integer, ForeignKey('users.id'))
     planets_id = Column(Integer, ForeignKey('planets.id'))
-    user = relationship('User', back_populates="children")
+    user = relationship('User')
     
 
     def to_dict(self):
