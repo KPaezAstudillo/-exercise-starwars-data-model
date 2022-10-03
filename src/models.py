@@ -12,7 +12,7 @@ class User(Base):
     __tablename__ = 'users'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     first_name = Column(String(250), nullable=False)
     last_name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
@@ -21,13 +21,13 @@ class User(Base):
 
 class Character(Base):
     __tablename__ = 'characters'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(250), nullable=False)
     portrayed_by = Column(String(250), nullable=False)
 
 class Planet(Base):
     __tablename__= 'planets'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
     first_appearance = Column(String(250), nullable=False)
