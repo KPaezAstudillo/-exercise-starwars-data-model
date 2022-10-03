@@ -35,16 +35,16 @@ class Planet(Base):
 class FavoriteCharacter(Base):
     __tablename__= 'favoritecharacters'
     id = Column(Integer, primary_key=True)
-    users_id = Column(Integer, ForeignKey('user.id'))
+    users_id = Column(Integer, ForeignKey('users.id'))
     characters_id = Column(Integer, ForeignKey('characters.id'))
-    user = relationship(User)
+    user = relationship('User')
 
 class FavoritePlanet(Base):
     __tablename__= 'favoriteplanets'
     id = Column(Integer, primary_key=True)
-    users_id = Column(Integer, ForeignKey('user.id'))
+    users_id = Column(Integer, ForeignKey('users.id'))
     planets_id = Column(Integer, ForeignKey('planets.id'))
-    user = relationship(User)
+    user = relationship('User')
     
 
     def to_dict(self):
