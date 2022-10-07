@@ -23,27 +23,31 @@ class Character(Base):
     __tablename__ = 'characters'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(250), nullable=False)
-    portrayed_by = Column(String(250), nullable=False)
+    height = Column(Integer)
+    mass = Column(Integer)
+    hair_color = Column(String(250),
+    eye_color = Column(String(250),
+
 
 class Planet(Base):
     __tablename__= 'planets'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(250), nullable=False)
-    description = Column(String(250), nullable=False)
-    first_appearance = Column(String(250), nullable=False)
+    rotation_period = Column(Integer)
+    orbital_period = Column(Integer)
+    diameter = Column(Integer)
+    
 
 class FavoriteCharacter(Base):
     __tablename__= 'favoritecharacters'
-    id = Column(Integer, primary_key=True)
-    users_id = Column(Integer, ForeignKey('users.id'))
-    characters_id = Column(Integer, ForeignKey('characters.id'))
+    users_id = Column(Integer, ForeignKey('users.id'), primary_key=True)
+    characters_id = Column(Integer, ForeignKey('characters.id'), primary_key=True)
     user = relationship('User')
 
 class FavoritePlanet(Base):
     __tablename__= 'favoriteplanets'
-    id = Column(Integer, primary_key=True)
-    users_id = Column(Integer, ForeignKey('users.id'))
-    planets_id = Column(Integer, ForeignKey('planets.id'))
+    users_id = Column(Integer, ForeignKey('users.id'), primary_key=True)
+    planets_id = Column(Integer, ForeignKey('planets.id'), primary_key=True)
     user = relationship('User')
     
 
